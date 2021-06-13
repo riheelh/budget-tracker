@@ -1,9 +1,9 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-require('dotenv').config();
 const compression = require("compression");
 app.use(logger("dev"));
+require('dotenv').config();
 
 const PORT = rocess.env.PORT || 3000;
 const app = express();
@@ -11,7 +11,6 @@ const app = express();
 app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/budget', { 
@@ -19,9 +18,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/budget', {
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false
-
 });
-
 
 // routes
 app.use(require("./routes/api.js"));
